@@ -1,15 +1,13 @@
-package apps.com.rxapiintegration.feature.profile.view.activity;
+package apps.com.rxapiintegration.feature.profile;
 
 import android.app.ProgressDialog;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import apps.com.rxapiintegration.R;
 import apps.com.rxapiintegration.databinding.ActivityUsernameBinding;
 import apps.com.rxapiintegration.dependencyinjection.PresenterComponent;
-import apps.com.rxapiintegration.feature.profile.presenter.UsernamePresenter;
 import apps.com.rxapiintegration.feature.shared.view.activity.PresentedActivity;
 
 public class UsernameActivity extends PresentedActivity<UsernamePresenter>
@@ -38,7 +36,12 @@ public class UsernameActivity extends PresentedActivity<UsernamePresenter>
 
     @Override
     protected void injectPresenter(PresenterComponent presenterComponent, UsernamePresenter presenter) {
-        presenterComponent.inject(presenter);
+        ProfilePresenterComponent profilePresenterComponent = DaggerProfilePresenterComponent.builder()
+                .presenterComponent(presenterComponent)
+                .profileModule(new ProfileModule(this))
+                .build();
+
+        profilePresenterComponent.inject(presenter);
     }
 
     @Override

@@ -5,7 +5,7 @@ import android.content.Context;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import apps.com.rxapiintegration.feature.profile.model.UserDetails;
+import apps.com.rxapiintegration.feature.profile.UserDetails;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

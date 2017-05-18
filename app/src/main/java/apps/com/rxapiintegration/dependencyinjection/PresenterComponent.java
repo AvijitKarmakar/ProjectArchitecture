@@ -2,7 +2,8 @@ package apps.com.rxapiintegration.dependencyinjection;
 
 import javax.inject.Singleton;
 
-import apps.com.rxapiintegration.feature.profile.presenter.UsernamePresenter;
+import apps.com.rxapiintegration.restservice.EventBus;
+import apps.com.rxapiintegration.restservice.RestService;
 import dagger.Component;
 
 /**
@@ -12,5 +13,7 @@ import dagger.Component;
 @Singleton
 @Component(modules = {PresenterModule.class})
 public interface PresenterComponent {
-    void inject(UsernamePresenter usernamePresenter);
+    EventBus getEventBus();
+
+    RestService getRestService();
 }

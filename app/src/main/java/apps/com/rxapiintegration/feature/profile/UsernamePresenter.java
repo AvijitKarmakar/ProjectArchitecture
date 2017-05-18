@@ -1,4 +1,4 @@
-package apps.com.rxapiintegration.feature.profile.presenter;
+package apps.com.rxapiintegration.feature.profile;
 
 import android.util.Log;
 
@@ -6,7 +6,6 @@ import javax.inject.Inject;
 
 import apps.com.rxapiintegration.constants.Constants;
 import apps.com.rxapiintegration.feature.shared.presenter.PresenterStub;
-import apps.com.rxapiintegration.feature.profile.model.UserDetails;
 import apps.com.rxapiintegration.restservice.Event;
 import apps.com.rxapiintegration.restservice.EventBus;
 import apps.com.rxapiintegration.restservice.EventSubscriber;

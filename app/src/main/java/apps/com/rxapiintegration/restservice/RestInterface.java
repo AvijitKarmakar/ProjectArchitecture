@@ -1,6 +1,6 @@
 package apps.com.rxapiintegration.restservice;
 
-import apps.com.rxapiintegration.feature.profile.model.UserDetails;
+import apps.com.rxapiintegration.feature.profile.UserDetails;
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

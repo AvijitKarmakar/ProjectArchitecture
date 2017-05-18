@@ -56,9 +56,11 @@ public abstract class PresentedActivity<T extends Presenter> extends AppCompatAc
 
     private void inject() {
         presenter = onCreatePresenter();
+
         PresenterComponent presenterComponent = DaggerPresenterComponent.builder()
                 .presenterModule(new PresenterModule(this))
                 .build();
+
         injectPresenter(presenterComponent, presenter);
     }
 
