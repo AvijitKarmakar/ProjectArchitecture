@@ -10,9 +10,9 @@ import io.reactivex.schedulers.Schedulers;
  * Created by USER on 31-03-2017.
  */
 
-class CustomObservableTransformer {
+public class CustomObservableTransformer {
 
-    static <T> ObservableTransformer<T, T> transformObservable() {
+    public static <T> ObservableTransformer<T, T> transformObservable() {
         return new ObservableTransformer<T, T>() {
             @Override
             public ObservableSource<T> apply(Observable<T> upstream) {

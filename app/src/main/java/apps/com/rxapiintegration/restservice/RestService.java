@@ -5,7 +5,7 @@ import android.content.Context;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import apps.com.rxapiintegration.feature.profile.UserDetails;
+import apps.com.rxapiintegration.constants.Constants;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -19,9 +19,9 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 
 public class RestService {
 
-    private RestInterface restInterface;
+    protected Retrofit retrofit;
+    protected EventBus eventBus;
     private Context context;
-    private EventBus eventBus;
 
     public RestService(Context context, EventBus eventBus) {
         this.context = context;
@@ -35,19 +35,12 @@ public class RestService {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-        restInterface = new Retrofit.Builder()
-                .baseUrl(RestInterface.BASE_URL)
+        retrofit = new Retrofit.Builder()
+                .baseUrl(Constants.BASE_URL)
                 .client(clientBuilder.build())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .addConverterFactory(JacksonConverterFactory.create(objectMapper))
-                .build()
-                .create(RestInterface.class);
-    }
-
-    public void getUserDetails(String username, int requestCode) {
-        restInterface.getUserDetails(username)
-                .compose(CustomObservableTransformer.<UserDetails>transformObservable())
-                .subscribeWith(new ApiObserver<UserDetails>(eventBus, requestCode));
+                .build();
     }
 
 }

@@ -5,7 +5,6 @@ import android.app.Activity;
 import javax.inject.Singleton;
 
 import apps.com.rxapiintegration.restservice.EventBus;
-import apps.com.rxapiintegration.restservice.RestService;
 import apps.com.rxapiintegration.restservice.RxBus;
 import dagger.Module;
 import dagger.Provides;
@@ -27,11 +26,6 @@ public class PresenterModule {
     @Provides
     EventBus getEventBus() {
         return new RxBus();
-    }
-
-    @Provides
-    RestService getRestService(EventBus eventBus) {
-        return new RestService(activity, eventBus);
     }
 
 }

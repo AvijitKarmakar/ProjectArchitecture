@@ -9,24 +9,23 @@ import apps.com.rxapiintegration.feature.shared.presenter.PresenterStub;
 import apps.com.rxapiintegration.restservice.Event;
 import apps.com.rxapiintegration.restservice.EventBus;
 import apps.com.rxapiintegration.restservice.EventSubscriber;
-import apps.com.rxapiintegration.restservice.RestService;
 
 /**
  * Created by USER on 01-05-2017.
  */
 
-public class UsernamePresenter extends PresenterStub implements EventSubscriber {
+class ProfilePresenter extends PresenterStub implements EventSubscriber {
 
     @Inject
-    RestService restService;
+    ProfileRestService restService;
 
     @Inject
     EventBus eventBus;
 
-    private IUsernameView iUsernameView;
+    private IProfileView iProfileView;
 
-    public UsernamePresenter(IUsernameView iUsernameView) {
-        this.iUsernameView = iUsernameView;
+    ProfilePresenter(IProfileView iProfileView) {
+        this.iProfileView = iProfileView;
     }
 
     @Override
@@ -39,8 +38,8 @@ public class UsernamePresenter extends PresenterStub implements EventSubscriber 
         eventBus.unsubscribe();
     }
 
-    public void onSearchBtnClick(String username) {
-        iUsernameView.showProgressDialog();
+    void onSearchBtnClick(String username) {
+        iProfileView.showProgressDialog();
         restService.getUserDetails(username, Constants.USER_DETAILS_REQ_CODE);
     }
 
@@ -51,28 +50,28 @@ public class UsernamePresenter extends PresenterStub implements EventSubscriber 
                 Log.e("onEvent: ", "success");
                 if (event.getRequestCode() == Constants.USER_DETAILS_REQ_CODE) {
                     UserDetails userDetails = event.getResult();
-                    iUsernameView.setName(userDetails.getName());
-                    iUsernameView.setLocation(userDetails.getLocation());
+                    iProfileView.setName(userDetails.getName());
+                    iProfileView.setLocation(userDetails.getLocation());
                 }
                 break;
 
             case Event.TYPE_ERROR:
                 Log.e("onEvent: ", "error");
                 if (event.getRequestCode() == Constants.USER_DETAILS_REQ_CODE) {
-                    iUsernameView.dismissProgressDialog();
+                    iProfileView.dismissProgressDialog();
                 }
                 break;
 
             case Event.TYPE_COMPLETION:
                 Log.e("onEvent: ", "completion");
                 if (event.getRequestCode() == Constants.USER_DETAILS_REQ_CODE) {
-                    iUsernameView.dismissProgressDialog();
+                    iProfileView.dismissProgressDialog();
                 }
                 break;
         }
     }
 
-    public interface IUsernameView {
+    interface IProfileView {
         void setName(String name);
 
         void setLocation(String location);

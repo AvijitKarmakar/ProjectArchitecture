@@ -10,10 +10,10 @@ import apps.com.rxapiintegration.databinding.ActivityUsernameBinding;
 import apps.com.rxapiintegration.dependencyinjection.PresenterComponent;
 import apps.com.rxapiintegration.feature.shared.view.activity.PresentedActivity;
 
-public class UsernameActivity extends PresentedActivity<UsernamePresenter>
-        implements UsernamePresenter.IUsernameView, View.OnClickListener {
+public class ProfileActivity extends PresentedActivity<ProfilePresenter>
+        implements ProfilePresenter.IProfileView, View.OnClickListener {
 
-    private UsernamePresenter presenter;
+    private ProfilePresenter presenter;
     private ActivityUsernameBinding binding;
     private ProgressDialog progressDialog;
 
@@ -23,19 +23,18 @@ public class UsernameActivity extends PresentedActivity<UsernamePresenter>
         binding = DataBindingUtil.setContentView(this, R.layout.activity_username);
 
         binding.searchBtn.setOnClickListener(this);
-
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
     }
 
     @Override
-    protected UsernamePresenter onCreatePresenter() {
-        presenter = new UsernamePresenter(this);
+    protected ProfilePresenter onCreatePresenter() {
+        presenter = new ProfilePresenter(this);
         return presenter;
     }
 
     @Override
-    protected void injectPresenter(PresenterComponent presenterComponent, UsernamePresenter presenter) {
+    protected void injectPresenter(PresenterComponent presenterComponent, ProfilePresenter presenter) {
         ProfilePresenterComponent profilePresenterComponent = DaggerProfilePresenterComponent.builder()
                 .presenterComponent(presenterComponent)
                 .profileModule(new ProfileModule(this))

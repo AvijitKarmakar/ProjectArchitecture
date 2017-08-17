@@ -14,6 +14,4 @@ import dagger.Component;
 @Component(modules = {PresenterModule.class})
 public interface PresenterComponent {
     EventBus getEventBus();
-
-    RestService getRestService();
 }

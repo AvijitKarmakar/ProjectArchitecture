@@ -10,6 +10,6 @@ import dagger.Component;
 
 @UserScope
 @Component(dependencies = {PresenterComponent.class}, modules = {ProfileModule.class})
-public interface ProfilePresenterComponent {
-    void inject(UsernamePresenter presenter);
+interface ProfilePresenterComponent {
+    void inject(ProfilePresenter presenter);
 }
