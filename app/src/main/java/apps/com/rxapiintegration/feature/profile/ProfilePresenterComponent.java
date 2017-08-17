@@ -9,7 +9,7 @@ import dagger.Component;
  */
 
 @UserScope
-@Component(dependencies = {PresenterComponent.class}, modules = {ProfileModule.class})
+@Component(dependencies = PresenterComponent.class, modules = ProfileModule.class)
 interface ProfilePresenterComponent {
     void inject(ProfilePresenter presenter);
 }

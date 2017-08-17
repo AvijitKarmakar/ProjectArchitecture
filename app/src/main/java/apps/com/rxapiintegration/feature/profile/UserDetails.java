@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserDetails {
+class UserDetails {
 
     private String name, location;
 
@@ -18,11 +18,11 @@ public class UserDetails {
         this.location = location;
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
-    public String getLocation() {
+    String getLocation() {
         return location;
     }
 

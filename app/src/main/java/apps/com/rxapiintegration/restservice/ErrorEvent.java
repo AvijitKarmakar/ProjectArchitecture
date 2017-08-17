@@ -4,18 +4,18 @@ package apps.com.rxapiintegration.restservice;
  * Created by USER on 30-04-2017.
  */
 
-public class ErrorEvent implements Event {
+class ErrorEvent implements Event {
 
 
     private Throwable throwable;
     private int requestCode;
 
-    public ErrorEvent(Throwable throwable, int requestCode) {
+    ErrorEvent(Throwable throwable, int requestCode) {
         this.throwable = throwable;
         this.requestCode = requestCode;
     }
 
-    public ErrorEvent(Throwable throwable) {
+    ErrorEvent(Throwable throwable) {
         this.throwable = throwable;
     }
 

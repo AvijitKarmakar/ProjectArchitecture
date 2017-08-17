@@ -14,5 +14,4 @@ public interface EventBus {
     void onError(Event event);
 
     void onCompletion(Event event);
-
 }

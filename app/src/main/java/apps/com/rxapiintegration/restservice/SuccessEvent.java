@@ -4,12 +4,12 @@ package apps.com.rxapiintegration.restservice;
  * Created by USER on 28-04-2017.
  */
 
-public class SuccessEvent<T> implements Event {
+class SuccessEvent<T> implements Event {
 
     private T result;
     private int requestCode;
 
-    public SuccessEvent(T result, int requestCode) {
+    SuccessEvent(T result, int requestCode) {
         this.result = result;
         this.requestCode = requestCode;
     }

@@ -4,15 +4,15 @@ package apps.com.rxapiintegration.restservice;
  * Created by USER on 30-04-2017.
  */
 
-public class CompletionEvent implements Event {
+class CompletionEvent implements Event {
 
     private int requestCode;
 
-    public CompletionEvent(int requestCode) {
+    CompletionEvent(int requestCode) {
         this.requestCode = requestCode;
     }
 
-    public CompletionEvent() {
+    CompletionEvent() {
 
     }
 
